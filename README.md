@@ -2,7 +2,11 @@
 
 ### install
 ```
+# main
 $ pip install git+http...
+
+# branch
+$ pip install git+https... <BRANCH_NAME>
 ```
 # Main
 ```
