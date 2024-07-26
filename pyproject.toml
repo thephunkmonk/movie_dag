@@ -1,7 +1,7 @@
 [project]
 name = "mov"
-version = "0.1.0"
-description = "Default template for PDM package"
+version = "0.2.0"
+description = "Sifting through data from Korean movie db"
 authors = [
     {name = "thephunkmonk", email = "andrewchoi1218@gmail.com"},
 ]
@@ -17,3 +17,10 @@ build-backend = "pdm.backend"
 
 [tool.pdm]
 distribution = true
+
+[project.urls]
+Homepage=""
+Issues=""
+
+[project.scripts]
+mov-ping = 'mov.cli:ping'
