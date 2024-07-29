@@ -2,11 +2,11 @@ import requests
 import os
 import pandas as pd
 
-def save2df():
+def save2df(load_dt='20120101'):
 	df = list2df()
 	# add load_dt column with format YYYYMMDD
 	# and partition by load_dt when saving to parquet
-	df['load_dt'] = '20120101'
+	df['load_dt'] = load_dt
 	print(df.head(5))
 #	df.to_parquet(f'~/data/parquet/load_dt={dt}/parquet.parquet', partition_cols=['load_dt'])
 	
@@ -14,12 +14,12 @@ def save2df():
 	return df
 
 
-def list2df():
+def list2df(load_dt='20120101'):
 	l = req2list()
 	df = pd.DataFrame(l)
 	print(df)
 	return df
-def req2list():
+def req2list(load_dt='20120101'):
 	_, data = req()
 #	data.get('').get('')
 	l = data['boxOfficeResult']['dailyBoxOfficeList']

@@ -8,7 +8,7 @@ def test_save2df():
 	assert 'openDt' in df.columns
 	assert 'movieNm' in df.columns
 	assert 'audiAcc' in df.columns
-	assert 'load_dt' in df.columns
+	assert 'load_dt' in df.columns	
 
 def test_gen_url():
 	url = gen_url()
