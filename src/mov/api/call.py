@@ -1,6 +1,19 @@
 import requests
 import os
 import pandas as pd
+
+def save2df():
+	df = list2df()
+	# add load_dt column with format YYYYMMDD
+	# and partition by load_dt when saving to parquet
+	df['load_dt'] = '20120101'
+	print(df.head(5))
+#	df.to_parquet(f'~/data/parquet/load_dt={dt}/parquet.parquet', partition_cols=['load_dt'])
+	
+	df.to_parquet(f'~/tmp/test_parquet', partition_cols=['load_dt'])
+	return df
+
+
 def list2df():
 	l = req2list()
 	df = pd.DataFrame(l)
