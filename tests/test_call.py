@@ -1,5 +1,17 @@
-from mov.api.call import gen_url, req, get_key, req2list, list2df, save2df
+from mov.api.call import apply_type2df, echo, gen_url, req, get_key, req2list, list2df, save2df
 import pandas as pd
+
+def test_apply():
+	df = apply_type2df()
+	assert isinstance(df, pd.DataFrame)
+	
+	num_cols = ['rnum', 'rank', 'rankInten', 'salesAmt', 'audiCnt', 'audiAcc', 'scrnCnt', 'showCnt', 'salesShare','salesInten','salesChange','audiInten','audiChange']
+	for col in num_cols:
+		assert str(df[col].dtype) in ['int64','float64']
+	
+def test_echo():
+	thing = echo('hey')
+	assert thing == 'hey'
 
 def test_save2df():
 	df = save2df()
