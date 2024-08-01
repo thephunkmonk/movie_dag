@@ -2,8 +2,7 @@ import requests
 import os
 import pandas as pd
 
-def echo(yaho):
-	return yaho
+
 
 def apply_type2df(load_dt='20120101', path="~/tmp/test_parquet"):
 	df = pd.read_parquet(f'{path}/load_dt={load_dt}')
@@ -42,10 +41,13 @@ def req2list(load_dt='20120101'):
 	l = data['boxOfficeResult']['dailyBoxOfficeList']
 	return l
 		
-def gen_url(dt="20120101"):
+def gen_url(dt="20120101", url_param={'multiMovieYn':'N'}):
 	base_url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json"
 	key="e1ac8e397edce73a571ba078b2d4db58"
-	url=f"{base_url}?key={key}&targetDt={dt}"
+	url=f"{base_url}?key={key}&targetDt={dt}" 
+	
+	for k, v in url_param.items():
+		url = url + f"&{k}={v}"
 	key = get_key()
 	return url
 
