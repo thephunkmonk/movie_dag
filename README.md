@@ -4,7 +4,7 @@
 ```
 # main
 $ pip install git+http...
-
+$ pip install git+https://github.com/thephunkmonk/movie_dag.git
 # branch
 $ pip install git+https... <BRANCH_NAME>
 ```
