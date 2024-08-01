@@ -18,8 +18,8 @@ def apply_type2df(load_dt='20120101', path="~/tmp/test_parquet"):
 #	df['rank']=pd.to_numeric(df['rank'])
 	return df
 
-def save2df(load_dt='20120101'):
-	df = list2df()
+def save2df(load_dt='20120101', url_param={}):
+	df = list2df(load_dt, url_param)
 	# add load_dt column with format YYYYMMDD
 	# and partition by load_dt when saving to parquet
 	df['load_dt'] = load_dt
@@ -30,12 +30,12 @@ def save2df(load_dt='20120101'):
 	return df
 
 
-def list2df(load_dt='20120101'):
-	l = req2list()
+def list2df(load_dt='20120101', url_param = {}):
+	l = req2list(load_dt, url_param)
 	df = pd.DataFrame(l)
 	print(df)
 	return df
-def req2list(load_dt='20120101'):
+def req2list(load_dt='20120101', url_param = {}):
 	_, data = req()
 #	data.get('').get('')
 	l = data['boxOfficeResult']['dailyBoxOfficeList']
@@ -51,8 +51,8 @@ def gen_url(dt="20120101", url_param={'multiMovieYn':'N'}):
 	key = get_key()
 	return url
 
-def req(dt="20120101"):
-	url = gen_url()
+def req(load_dt="20120101", url_param={}):
+	url = gen_url(load_dt, url_param)
 	r = requests.get(url)
 	data = r.json()
 	stat_code = r.status_code	
